@@ -1,0 +1,17 @@
+version: "3"
+services:
+  app:
+    build:
+      context: ./code-friends-main
+      dockerfile: ../Dockerfile # 👈 ye change kar
+    image: code-friends-app
+    container_name: code-friends-app
+    working_dir: /app
+    command: npm start
+    ports:
+      - "3000:3000"
+      - "4000:4000"
+    volumes:
+      - ./code-friends-main:/app
+    environment:
+      - NODE_ENV=development
