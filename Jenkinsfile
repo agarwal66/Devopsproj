@@ -36,7 +36,7 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 echo 'Running Docker Container...'
-                sh 'docker run -d -p 3000:3000 --name $CONTAINER_NAME $IMAGE_NAME'
+                sh 'docker run -d -p 4000:4000 --name $CONTAINER_NAME $IMAGE_NAME'
             }
         }
 
