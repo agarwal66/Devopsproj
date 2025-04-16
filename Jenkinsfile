@@ -17,14 +17,19 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 echo 'Installing Node.js Dependencies...'
-                sh 'npm install'
+                // Navigate to the correct directory before running npm install
+                dir('code-friends-main') {
+                    sh 'npm install'
+                }
             }
         }
 
         stage('Build Docker Image') {
             steps {
                 echo 'Building Docker Image...'
-                sh 'docker build -t $IMAGE_NAME .'
+                dir('code-friends-main') {
+                    sh 'docker build -t $IMAGE_NAME .'
+                }
             }
         }
 
