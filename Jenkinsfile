@@ -33,11 +33,14 @@ pipeline {
             }
         }
 
-        stage('Run Docker Container') {
-            steps {
-                echo 'Running Docker Container...'
-                sh 'docker run -d -p 4000:4000 --name $CONTAINER_NAME $IMAGE_NAME'
-            }
+       stage('Run Docker Container') {
+    steps {
+        echo 'Running Docker Container...'
+        sh 'docker stop code-friends-app || true'
+        sh 'docker rm code-friends-app || true'
+        sh 'docker run -d -p 4000:4000 --name code-friends-app code-friends-app'
+    }
+
         }
 
         stage('Test App') {
