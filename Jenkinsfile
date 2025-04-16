@@ -1,5 +1,6 @@
 pipeline {
     agent any
+
     environment {
         IMAGE_NAME = "code-friends-app"
         CONTAINER_NAME = "code-friends-container"
@@ -9,6 +10,7 @@ pipeline {
         stage('Clone Repo') {
             steps {
                 echo 'Cloning Repository...'
+                git url: 'https://github.com/agarwal66/Devopsproj.git', branch: 'main'
             }
         }
 
@@ -32,6 +34,7 @@ pipeline {
                 sh 'docker run -d -p 3000:3000 --name $CONTAINER_NAME $IMAGE_NAME'
             }
         }
+
         stage('Test App') {
             steps {
                 echo 'Testing app...'
@@ -39,6 +42,7 @@ pipeline {
             }
         }
     }
+
     post {
         always {
             echo 'Cleaning up Docker container and image...'
