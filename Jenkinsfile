@@ -42,9 +42,10 @@ pipeline {
 
         stage('Test App') {
             steps {
-                echo 'Testing app...'
-                sh 'sleep 10 && curl -f http://localhost:4000 || echo "App might not be running."'
-            }
+        echo 'Testing app...'
+        sh 'sleep 10'
+        sh 'curl -f http://host.docker.internal:4000 || echo "App might not be running."'
+    }
         }
     }
 
