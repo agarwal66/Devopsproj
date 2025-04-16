@@ -43,7 +43,7 @@ pipeline {
         stage('Test App') {
             steps {
                 echo 'Testing app...'
-                sh 'sleep 10 && curl -f http://localhost:3000 || echo "App might not be running."'
+                sh 'sleep 10 && curl -f http://localhost:4000 || echo "App might not be running."'
             }
         }
     }
