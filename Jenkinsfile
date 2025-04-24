@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "code-friends-app"
+        IMAGE_NAME = "code-friends-appp"
         CONTAINER_NAME = "code-friends-container"
     }
 
